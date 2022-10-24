@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import (TemplateView, ListView, CreateView, DetailView)
+from django.views.generic import (TemplateView, ListView, CreateView, DetailView, FormView)
 from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.views.generic.detail import SingleObjectMixin
 
 from . models import Journal
 
@@ -35,5 +36,32 @@ class JournalCreateView(CreateView):
 
         return super().form_valid(form)
 
+class EditTradeView(SingleObjectMixin, FormView):
 
+    model = Journal
+    template_name = 'edit_trade.html'
 
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object(queryset=Journal.objects.all())
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object(queryset=Journal.objects.all())
+        return super().post(request, *args, **kwargs)
+
+    def get_form(self, form_class=None):
+        return JournalTradesFormset(**self.get_form_kwargs(), instance=self.object)
+
+    def form_valid(self, form):
+        form.save()
+
+        messages.add_message(
+            self.request,
+            messages.SUCCESS,
+            'Changes were saved.'
+        )
+
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse('trades:trade_view')
