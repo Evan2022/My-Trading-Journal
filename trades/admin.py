@@ -5,3 +5,4 @@ from . models import Journal
 
 admin.site.register(Journal)
 
+

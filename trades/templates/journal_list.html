@@ -5,5 +5,15 @@
 {% block content %}
 
     <h1>Journals</h1>
-
+    {% if journal_list %}
+        <ul class="list-group">
+            {% for journal in journal_list %}
+                <li class="list-group-item">
+                    <a href="" class="text-reset">{{ journal.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>There are no Journals to display.</p>
+    {% endif %}
 {% endblock content %}
