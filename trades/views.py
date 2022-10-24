@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import (TemplateView, ListView, CreateView)
+from django.views.generic import (TemplateView, ListView, CreateView, DetailView)
 from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponseRedirect
@@ -14,6 +14,11 @@ class HomeView(TemplateView):
 class JournalListView(ListView):
     model = Journal
     template_name = 'journal_list.html'
+
+
+class TradeView(DetailView):
+    model = Journal
+    template_name = 'trade_view.html'
 
 
 class JournalCreateView(CreateView):

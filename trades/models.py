@@ -1,5 +1,5 @@
 from django.db import models
-from django.db import reverse
+from django.urls import reverse
 
 
 class Journal(models.Model):

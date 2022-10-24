@@ -5,7 +5,7 @@
 {% block content %}
 
     <a href="{% url 'trades:journals' %}" role="button" class="btn btn-outline-primary">View a Journal</a>
-    <a href="" role="button" class="btn btn-outline-danger">Add a Journal</a>
+    <a href="{% url 'trades:add_journal' %}" role="button" class="btn btn-outline-danger">Add a Journal</a>
 
 
 {% endblock content %}
