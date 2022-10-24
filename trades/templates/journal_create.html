@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}New Journal{% endblock %}
+
+{% block content %}
+
+    <form action="" method="post">
+        {% for hidden_field in form.hidden_fields %}
+            {{ hidden_field.errors }}
+            {{ hidden_field}}
+        {% endfor %}
+
+        {% csrf_token %}
+
+        {{ form.non_form_errors }}
+
+        {% for field in form %}
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        {% endfor %}
+
+        <p class="pt-2">
+            <button type="submit" value="Add Journal" class="btn btn-outline-primary">Add Journal</button>
+            <a href="{% url 'trades:home' %}" role="button" class="btn btn-outline-danger">Cancel</a>
+        </p>
+    </form>
+
+{% endblock content %}

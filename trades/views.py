@@ -25,10 +25,10 @@ class JournalCreateView(CreateView):
         messages.add_message(
             self.request,
             messages.SUCCESS,
-            'New Journal added successfully.'
+            'Journal added successfully.'
         )
 
-        return super().form_valid
+        return super().form_valid(form)
 
 
 
