@@ -6,5 +6,7 @@ app_name = 'trades'
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
-    path('journals/', views.JournalsListView.as_view(), name='journals'),
+    path('journals/', views.JournalListView.as_view(), name='journals'),
+    path('journals/add/', views.JournalCreateView.as_view(), name='add_journal'),
 ]
+

@@ -3,7 +3,6 @@
 {% block title %}Journals{% endblock %}
 
 {% block content %}
-
     <h1>Journals</h1>
     {% if journal_list %}
         <ul class="list-group">
@@ -16,4 +15,8 @@
         {% else %}
             <p>There are no Journals to display.</p>
     {% endif %}
+
+    <p class="pt-2">
+        <a href="{% url 'trades:home' %}" role="button" class="btn btn-outline-primary">Cancel</a>
+    </p>
 {% endblock content %}
