@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.views.generic import (TemplateView, ListView, CreateView, DetailView, FormView)
 from django.contrib import messages
 from django.urls import reverse
-from django.http import HttpResponseRedirect
 from django.views.generic.detail import SingleObjectMixin
+from django.http import HttpResponseRedirect
 
 from . models import Journal
+from . forms import JournalTradesFormset
 
 
 class HomeView(TemplateView):
@@ -36,6 +37,7 @@ class JournalCreateView(CreateView):
 
         return super().form_valid(form)
 
+
 class EditTradeView(SingleObjectMixin, FormView):
 
     model = Journal
@@ -64,4 +66,4 @@ class EditTradeView(SingleObjectMixin, FormView):
         return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):
-        return reverse('trades:trade_view')
+        return reverse('trades:trade_view', kwargs={'pk': self.object.pk})

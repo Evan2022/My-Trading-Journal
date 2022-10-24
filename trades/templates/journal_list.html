@@ -8,7 +8,7 @@
         <ul class="list-group">
             {% for journal in journal_list %}
                 <li class="list-group-item">
-                    <a href="" class="text-reset">{{ journal.name }}</a>
+                    <a class="text-reset" href="{{ journal.get_absolute_url }}">{{ journal.name }}</a>
                 </li>
             {% endfor %}
         </ul>

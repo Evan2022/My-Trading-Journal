@@ -22,7 +22,7 @@
         {% endfor %}
 
     <p>
-        <a href="" role="button" class="btn btn-outline-primary">Edit Trades</a>
+        <a href="{% url 'trades:edit_trade' pk=journal.pk %}" role="button" class="btn btn-outline-primary">Edit Trades</a>
         <a href="{% url 'trades:journals' %}" role="button" class="btn btn-outline-secondary">Journals</a>
     </p>
 
