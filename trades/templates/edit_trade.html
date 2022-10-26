@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Editing Trades in{{ journal.name }}{% endblock %}
+{% block title %}{{ journal.name }}{% endblock %}
 
 {% block content %}
 
@@ -15,19 +15,14 @@
 
     {{ form.management_form }}
     {{ form.non_form_errors }}
+    
 
-    <h3>Edit Trade</h3>
+    <h3>{{ journal.name}}</h3>
     {% for trade_form in form.forms %}
       <hr>
       <h5>
         {% if trade_form.instance.id %}
-          Trade: {{ trade_form.instance.title|title }}
-        {% else %}
-          {% if form.forms|length > 1 %}
-            Add another Trade
-          {% else %}
-            Add a Trade
-          {% endif %}
+          {{ trade_form.instance.title }}
         {% endif %}
       </h5>
       {% for hidden_field in book_form.hidden_fields %}

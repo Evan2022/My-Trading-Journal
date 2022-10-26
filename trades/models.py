@@ -15,8 +15,14 @@ class Journal(models.Model):
 
 class Trade(models.Model):
 
-    title = models.CharField(null=False, blank=False, max_length=255)
+    strategy = models.CharField(null=False, blank=False, max_length=255)
+    balance = models.IntegerField(null=False, blank=False, default=0)
+    win_or_loss = models.CharField(null=False, blank=False, default='Win', max_length=255)
+    profit = models.IntegerField(null=False, blank=False, default=0)
+    image_link = models.URLField(null=False, blank=True, max_length=500)
+    notes = models.CharField(null=False, blank=True, max_length=255)
 
     journal = models.ForeignKey('Journal', null=False, blank=False, on_delete=models.CASCADE, related_name='trade_journal')
 
-    
+
+

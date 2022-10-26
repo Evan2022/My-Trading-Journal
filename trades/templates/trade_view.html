@@ -13,10 +13,10 @@
     {% endif %}
 
     <h3>Journal Details</h3>
-    <div class="d-flex d-flex-inline"><span class="pe-2">Journal name:</span> <h5>{{ journal.name|title }}</h5></div>
+    <div class="d-flex d-flex-inline"><span class="pe-2">Journal name:</span> <h5>{{ journal.name }}</h5></div>
     <hr>
         {% for trade in journal.trade_journal.all %}
-        <div class="small">Trade ID: {{ trade.id }}</div>
+        <div class="small">{{ trade }}</div>
         <div>Title: {{ trade.title }}</div>
         <hr>
         {% endfor %}
