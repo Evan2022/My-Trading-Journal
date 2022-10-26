@@ -13,6 +13,10 @@ class HomeView(TemplateView):
     template_name = 'home.html'
 
 
+class LoginView(TemplateView):
+    template_name = 'login.html'
+
+
 class JournalListView(ListView):
     model = Journal
     template_name = 'journal_list.html'
